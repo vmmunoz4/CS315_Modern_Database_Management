@@ -20,23 +20,28 @@ a:hover {
 	text-decoration:none;
 }
 
+h1, h2, h3, p, li, a {
+	color: #3d3d3f;
+}
+
 /* body */
 body {
-	background:#ffffff;
-	color:#555;
+	background-color: #f6f5f3;/*#ffffff;*/
+	/*color:#555;*/
 	position: relative; /* Devin */
-	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
+	font:1.3em Arial, Helvetica, "bitstream vera sans", sans-serif;
 }
 
 /* header */
 #header {
 	border-bottom:1px solid #999;
-	height:80px;
+	height:auto;
 	margin:0 auto;
-	width:90%; /*751ps*/
+	width:100%; /*751ps*/
+	background-color: #b6baa5;/* Devin Wood */
 }
 #header h1 {
-	color:#888;
+	/*color:#888;*/
 	font-size:300%;
 	letter-spacing:-3px;
 	text-align:right;
@@ -44,7 +49,7 @@ body {
 	margin-bottom:-20px;
 }
 #header h2 {
-	color:#CCC;
+	/*color:#CCC;*/
 	font-size:200%;
 	letter-spacing:-2px;
 	text-align:right;
@@ -52,7 +57,7 @@ body {
 
 /* navigation */
 #navigation {
-	background:#fafafa;
+	background:#7dce94; /*#fafafa*/;
 	border-right:1px solid #999;
 	margin:0 auto;
 	width:90%; /* 750ox */
@@ -64,9 +69,10 @@ body {
 	float:left;
 	width:16.59%;/*149px*/
 	list-style:none;
+	font-size: 150%;
 }
 #navigation a {
-	color:#555;
+	/*color:#555;*/
 	display:block;
 	line-height:40px;
 	text-align:center;
@@ -79,6 +85,23 @@ body {
 	background:#e3e3e3;
 	color:#777;
 }
+#navigation a:first-of-type {
+
+border-top-left-radius: 40px;
+
+border-bottom-left-radius: 40px;
+
+}
+
+
+
+#navigation a:last-of-type {
+
+border-top-right-radius: 40px;
+
+border-bottom-right-radius: 40px;
+
+}
 
 /* content */
 #content {
@@ -86,10 +109,11 @@ body {
 	margin:0 auto;
 	padding:0 0 20px;
 	width:80%; /* 751px */
+
 }
 #content h1 {
 	border-bottom:1px dashed #999;
-	font-size:1.8em;
+	font-size:2.1em;
 	padding:20px 0 0;
 }
 #content p {

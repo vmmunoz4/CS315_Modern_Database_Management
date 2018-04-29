@@ -40,12 +40,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $e = mysqli_real_escape_string($dbc, trim($_POST['email']));
   }
 
+  $purchased_seats = "SELECT seats_purchased FROM movies_theaters WHERE movie_id = $mo AND theater_id = $th";
+  $purchased_seats_results = @mysqli_query($dbc, $purchased_seats);
+  $purchased_seats_num = mysqli_fetch_array($purchased_seats_results);
+  $total_seats = "SELECT seats_per_theater FROM theaters WHERE theater_id = $th";
+  $total_seats_results = @mysqli_query($dbc, $total_seats); // Should be 100
+  $total_seats_num = mysqli_fetch_array($total_seats_results);
+  $test_seats = $purchased_seats_num[0] + $_POST['num_tickets'];
+// DEBUGGING MESSAGE
+  /*echo "<h1>These are my Variables!</h1><p>$th, $mo, $total_seats_num[0], $purchased_seats_num[0], $test_seats</p>";*/
+  if ($test_seats > $total_seats_num[0]) {
+    $errors[] = 'There are not enough seats available at this theater please choose a different amount';
+  }
+
   if (empty($errors)) { // Postback and all clear
 
     // Make an update query'
     for ($i = 0; $i < $_POST['num_tickets']; $i++){
       $q3 = "INSERT INTO tickets (movie_id, theater_id, price) VALUES ($mo, $th, 0.00)";
       $r3 = @mysqli_query($dbc, $q3); // Create a ticket record
+      $query_update_seats = "UPDATE movies_theaters SET seats_purchased = $test_seats WHERE movie_id = $mo AND theater_id = $th";
+      $res = @mysqli_query($dbc, $query_update_seats);
     }
     if ($r3) { // If the query worked.
       $q4 = "SELECT movie_title FROM movies WHERE movie_id = $mo";
