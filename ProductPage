@@ -1,0 +1,100 @@
+<html>
+<head>
+  <link rel="stylesheet" href="cssSheet.css">
+</head>
+<body>
+	<div id = "header">
+		<h1> QuickBuyOnline</h1>
+		<div id = "nav">
+			<ul>
+				<li> <a href = ""> Home </a></li>
+				<li><a href = "">Register </a></li>
+				<li><a href = "">Sign In </a></li>
+				<li><a href = "">Cart </a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id = "content">
+		<div id = "List">	
+			<h2>Our Products</h2>
+			
+		<table>
+			<thead>
+				<tr>
+					<th>ProductID</th>
+					<th>Product</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>AddToCart</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>P20</td>
+					<td>Pencil</td>
+					<td>#2 pencils</td>
+					<td>$2</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+						<tr>
+					<td>P21</td>
+					<td>earphones </td>
+					<td>Sony sport earphones</td>
+					<td>$90</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+						<tr>
+					<td>P22</td>
+					<td>notepad</td>
+					<td> 100 college rule paper</td>
+					<td>$5</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+						<tr>
+					<td>P23</td>
+					<td>white</td>
+					<td>white t-shirt</td>
+					<td>$15</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+						<tr>
+					<td>P24</td>
+					<td>shoes</td>
+					<td>Gym shoes</td>
+					<td>$45</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+						</tr>
+						<tr>
+					<td>P24</td>
+					<td>keyboard</td>
+					<td>Ergonomic computer keyboard</td>
+					<td>$33</td>
+					<td><input type = "text" name ="quantity"></td>
+					<td><input id = "checkBox" type = "checkbox"></td>
+				</tr>
+			</tbody>
+			
+		</table>
+	<button type = "buy"> Add to Cart</button>
+		
+
+		</div>
+		
+	</div>
+	
+		<div id = "footer">
+			<p> QuckBuyOnline &copy; Copyright 2018</p>
+		</div>
+
+</body>
+</html>
+		
+		
