@@ -1,9 +1,10 @@
 CREATE TABLE users (
   user_id int UNIQUE NOT NULL AUTO_INCREMENT,
-  username int UNIQUE NOT NULL,
+  username varchar(50) UNIQUE NOT NULL,
   first_name varchar(50) NOT NULL,
   last_name varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
+  pass varchar(41) NOT NULL,
   administrator boolean NOT NULL DEFAULT false,
   registration_date datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (user_id)
@@ -28,10 +29,12 @@ CREATE TABLE carts (
 );
 
 CREATE TABLE products (
-  item_id int UNIQUE NOT NULL AUTO_INCREMENT,
+  product_id int UNIQUE NOT NULL AUTO_INCREMENT,
   name varchar(40) NOT NULL,
   price float NOT NULL,
-  description varchar(300)
+  description varchar(300),
+  purchased boolean NOT NULL DEFAULT false,
+  PRIMARY KEY (product_id)
 );
 
 CREATE TABLE carts_products (
@@ -40,3 +43,14 @@ CREATE TABLE carts_products (
   FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
   FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE purchases (
+  purchase_id int UNIQUE NOT NULL AUTO_INCREMENT,
+  product_id int NOT NULL,
+  PRIMARY KEY (purchase_id),
+  FOREIGN KEY (products) REFERENCES products(product_id)
+);
+
+INSERT INTO users (username, first_name, last_name, email, pass, administrator)
+VALUES ('admin1', 'test', 'admin', 'admin@testemail.test', SHA1('password'), true),
+('test', 'test', 'user', 'test@testemail.test', SHA1('password'), true);

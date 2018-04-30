@@ -6,11 +6,11 @@ $page_title = 'Purchase Tickets';
 include ('includes/header.html');
 require_once('../mysqli_connect.php'); // Connect to the db.
 
-$q = "SELECT * FROM theaters";
+$q = "SELECT * FROM products";
 $r = @mysqli_query($dbc, $q); // Run the query
-$q2 = "SELECT * FROM movies";
+/*$q2 = "SELECT * FROM movies";
 $r2 = @mysqli_query($dbc, $q2); // Run the query
-
+*/
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errors = array();
 
@@ -35,18 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $qu = mysqli_real_escape_string($dbc, trim($_POST['num_tickets']));
   } //echo "$th";
 
-  $purchased_seats = "SELECT seats_purchased FROM movies_theaters WHERE movie_id = $mo AND theater_id = $th";
+  /*$purchased_seats = "SELECT seats_purchased FROM movies_theaters WHERE movie_id = $mo AND theater_id = $th";
   $purchased_seats_results = @mysqli_query($dbc, $purchased_seats);
   $purchased_seats_num = mysqli_fetch_array($purchased_seats_results);
   $total_seats = "SELECT seats_per_theater FROM theaters WHERE theater_id = $th";
   $total_seats_results = @mysqli_query($dbc, $total_seats); // Should be 100
   $total_seats_num = mysqli_fetch_array($total_seats_results);
-  $test_seats = $purchased_seats_num[0] + $_POST['num_tickets'];
+  $test_seats = $purchased_seats_num[0] + $_POST['num_tickets'];*/
 // DEBUGGING MESSAGE
   /*echo "<h1>These are my Variables!</h1><p>$th, $mo, $total_seats_num[0], $purchased_seats_num[0], $test_seats</p>";*/
-  if ($test_seats > $total_seats_num[0]) {
+  /*if ($test_seats > $total_seats_num[0]) {
     $errors[] = 'There are not enough seats available at this theater please choose a different amount';
-  }
+  }*/
 
   if (empty($errors)) { // Postback and all clear
 
@@ -99,22 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div class="purchase_page">
   <div class="purchase">
-  <h1>Purchase Tickets</h1><br /><br />
+  <h1>Purchase Items</h1><br /><br />
     <form action="purchase.php" method="post">
-      <label for="theater">Theater: </label>
-      <select name="theater">
+      <label for="product">Product: </label>
+      <select name="product">
         <?php
           while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-            echo '<option value="' . $row['theater_id'] . '">' . $row['theater_name'] . '</option>';
-          }
-        ?>
-      </select><br /><br />
-
-      <label for="movie">Movie: </label>
-      <select name="movie">
-        <?php
-          while ($row2 = mysqli_fetch_array($r2, MYSQLI_ASSOC)) {
-            echo '<option value="' . $row2['movie_id'] . '">' . $row2['movie_title'] . '</option>';
+            echo '<option value="' . $row['product_id'] . '">' . $row['name'] . '</option>';
           }
         ?>
       </select><br /><br />
